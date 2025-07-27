@@ -48,7 +48,7 @@ int initAccounts(socialGraph *database) {
         return 1; 
     }
 
-	while (i < database->nodes && fscanf(fp, "%d %19s %19s", &id, database->userAccount[i].userName.fName, database->userAccount[i].userName.lName) == 3)
+	while (i < database->nodes && fscanf(fp, "%d %s %s", &id, database->userAccount[i].userName.fName, database->userAccount[i].userName.lName) == 3)
 	{
 	    database->userAccount[i].ID = id;
 	    i++;
