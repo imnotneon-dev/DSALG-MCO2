@@ -22,3 +22,5 @@ typedef struct {
 	long int edges;
 } socialGraph;
 
+void loadGraph(socialGraph *database);
+int initAccounts(socialGraph *database);
