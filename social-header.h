@@ -14,6 +14,7 @@ typedef struct {
 	int ID;
 	int node;
 	int friendCount;
+	int *friends;
 } account;
 
 typedef struct {
@@ -21,4 +22,9 @@ typedef struct {
 	long int nodes;
 	long int edges;
 } socialGraph;
+
+void loadGraph(socialGraph *database);
+void mainMenu();
+void displayFriends(socialGraph *database);
+void freeGraph(socialGraph *database);
 
