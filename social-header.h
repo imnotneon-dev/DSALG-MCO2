@@ -28,3 +28,5 @@ void mainMenu();
 void displayFriends(socialGraph *database);
 void freeGraph(socialGraph *database);
 
+void loadGraph(socialGraph *database);
+int initAccounts(socialGraph *database);
