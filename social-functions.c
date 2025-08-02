@@ -58,7 +58,7 @@ void displayFriends(socialGraph *database)
 {
 	long int i;
 	int input = 0, node = -1, friendNode;
-	printf("Account ID: ");
+	printf("Person ID: ");
 	scanf("%d", &input);
 
 	for (i = 0; i < database->nodes; i++)
@@ -79,7 +79,7 @@ void displayFriends(socialGraph *database)
 		printf("\n");
 	}
 	else
-		printf("Account ID not found.\n");
+		printf("Person ID not found.\n");
 }
 
 void displayConnections(socialGraph *database)  // using BFS
@@ -99,14 +99,14 @@ void displayConnections(socialGraph *database)  // using BFS
     Queue *q = createQueue(database->nodes);
     account acc;
 
-    printf("Enter ID of first person: ");
+    printf("First Person ID: ");
     scanf("%d", &id1);
-    printf("Enter ID of second person: ");
+    printf("Second Person ID: ");
     scanf("%d", &id2);
 
     if(id1 < 0 || id1 >= database->nodes || id2 < 0 || id2 >= database->nodes)
     {
-        printf("ID/s do/es not exist.\n");
+        printf("One or both person IDs cannot be found.\n");
         return;
     }
 
@@ -146,7 +146,7 @@ void displayConnections(socialGraph *database)  // using BFS
 
     if(!found)
     {
-        printf("Cannot find a connection between %d and %d\n", id1, id2);
+        printf("No connection found between %d and %d\n", id1, id2);
     }
     else
     {
