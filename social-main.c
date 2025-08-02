@@ -5,9 +5,9 @@ int main()
 {
 	socialGraph socialMedia;
 	int choice = 0;
-	
+
 	loadGraph(&socialMedia);
-	
+
 //  just a debugger	DONT MIND HEHE
 //	printf("Loaded %ld nodes and %ld edges\n", socialMedia.nodes, socialMedia.edges);
 //
@@ -29,7 +29,7 @@ int main()
 				displayFriends(&socialMedia);
 				break;
 			case 2:
-				printf("Option 2 selected.\n");
+				displayConnections(&socialMedia);
 				break;
 			case 3:
 				printf("Exiting program...\n");
@@ -37,11 +37,10 @@ int main()
 			default:
 				printf("Invalid choice.\n");
 				while (getchar() != '\n');
-				break;
 		}
 	} while (choice != 3);
-	
+
 	freeGraph(&socialMedia);
-	
+
 	return 0;
 }
