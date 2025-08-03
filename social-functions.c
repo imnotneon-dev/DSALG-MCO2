@@ -94,7 +94,7 @@ void displayConnections(socialGraph *database)  // using BFS
     int to;
     int *visited = calloc(database->nodes, sizeof(int));    // 0 = unvisited, 1 = visited
     int *parent = malloc(database->nodes * sizeof(int));    // used to reconstruct path
-    int *path = malloc(database->nodes * sizeof(int));
+    int *path = malloc(database->nodes * sizeof(int));  // stores the reconstructed path
 
     Queue *q = createQueue(database->nodes);
     account acc;
@@ -145,9 +145,7 @@ void displayConnections(socialGraph *database)  // using BFS
     }
 
     if(!found)
-    {
         printf("No connection found between %d and %d\n", id1, id2);
-    }
     else
     {
         len = 0;
@@ -197,7 +195,7 @@ Queue *createQueue(int capacity)
     Queue *q = malloc(sizeof(Queue));
 
     q->items = malloc(sizeof(int) * capacity);
-    q->front = q->rear = -1;
+    q->front = q->back = -1;
     q->capacity = capacity;
 
     return q;
@@ -205,18 +203,18 @@ Queue *createQueue(int capacity)
 
 void addToQueue(Queue *q, int value)
 {
-    if(q->rear == q->capacity - 1)
+    if(q->back == q->capacity - 1)
         return;
 
     if(q->front == -1)
         q->front = 0;
 
-    q->items[++q->rear] = value;
+    q->items[++q->back] = value;
 }
 
 int removeFromQueue(Queue *q)   // remove and return the front value of the queue
 {
-    if(q->front == -1 || q->front > q->rear)
+    if(q->front == -1 || q->front > q->back)
         return -1;
 
     return q->items[q->front++];
@@ -224,7 +222,7 @@ int removeFromQueue(Queue *q)   // remove and return the front value of the queu
 
 int isEmpty(Queue *q)
 {
-    return q->front == -1 || q->front > q->rear;
+    return q->front == -1 || q->front > q->back;
 }
 
 void freeQueue(Queue *q)

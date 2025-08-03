@@ -26,7 +26,7 @@ typedef struct {
 // Queue for BFS
 typedef struct {
 	int *items;		// array of node IDs
-	int front, rear;
+	int front, back;
 	int capacity;		// total capacity of the queue
 } Queue;
 
