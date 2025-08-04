@@ -23,7 +23,22 @@ typedef struct {
 	long int edges;
 } socialGraph;
 
+// Queue for BFS
+typedef struct {
+	int *items;		// array of node IDs
+	int front, back;
+	int capacity;		// total capacity of the queue
+} Queue;
+
 void loadGraph(socialGraph *database);
 void mainMenu();
 void displayFriends(socialGraph *database);
+void displayConnections(socialGraph *database);
 void freeGraph(socialGraph *database);
+
+// Queue functions
+Queue *createQueue(int capacity);
+void addToQueue(Queue *q, int value);
+int removeFromQueue(Queue *q);
+int isEmpty(Queue *q);
+void freeQueue(Queue *q);
