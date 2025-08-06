@@ -58,28 +58,29 @@ void displayFriends(socialGraph *database)
 {
 	long int i;
 	int input = 0, node = -1, friendNode;
-	printf("Person ID: ");
-	scanf("%d", &input);
 
-	for (i = 0; i < database->nodes; i++)
-	{
-		if (input == database->userAccount[i].ID)
-			node = i;
-	}
+    printf("Person ID: ");
+    scanf("%d", &input);
 
-	if (node != -1)
-	{
+    for (i = 0; i < database->nodes; i++)
+    {
+        if (input == database->userAccount[i].ID)
+            node = i;
+    }
+
+    if (node != -1)
+    {
         printf("Person %d has %d friends!\n", node, database->userAccount[node].friendCount);
 
-		printf("List of friends: ");
-		for (i = 0; i < database->userAccount[node].friendCount; i++) {
-		    friendNode = database->userAccount[node].friends[i];
-		    printf("%d ", friendNode);
-		}
-		printf("\n");
-	}
-	else
-		printf("Person ID not found.\n");
+        printf("List of friends: ");
+        for (i = 0; i < database->userAccount[node].friendCount; i++) {
+            friendNode = database->userAccount[node].friends[i];
+            printf("%d ", friendNode);
+        }
+        printf("\n");
+    }
+    else
+        printf("Person ID not found.\n");
 }
 
 void displayConnections(socialGraph *database)  // using BFS
